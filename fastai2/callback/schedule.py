@@ -43,7 +43,8 @@ def combine_scheds(pcts, scheds):
     pcts = torch.cumsum(pcts, 0)
     def _inner(pos):
         if pos == 1.: return scheds[-1](1.)
-        idx = (pos >= pcts).nonzero().max()
+        #idx = (pos >= pcts).nonzero().max()
+        idx = torch.nonzero(pos >= pcts).max()
         actual_pos = (pos-pcts[idx]) / (pcts[idx+1]-pcts[idx])
         return scheds[idx](actual_pos.item())
     return _inner
