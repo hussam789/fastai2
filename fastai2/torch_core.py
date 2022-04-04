@@ -280,7 +280,7 @@ def _patch_tb():
         if isinstance(f, (MethodWrapperType, BuiltinFunctionType, BuiltinMethodType, MethodType, FunctionType)):
             setattr(TensorBase, fn, get_f(fn))
 
-_patch_tb()
+#_patch_tb()
 
 # Cell
 class TensorCategory(TensorBase): pass
